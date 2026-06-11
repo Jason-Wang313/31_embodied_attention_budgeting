@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{iclr2026_conference}
+\input{math_commands.tex}
+\usepackage{booktabs}
+\usepackage{url}
+
+\title{Embodied Attention Budgeting}
+\author{Anonymous Authors}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Active perception usually asks which observation would be most informative.
+For embodied robots, that question is incomplete: sensing consumes time,
+physical configuration, compute, power, and safety margin. We propose
+\emph{embodied attention budgeting}: a controller treats sensing as a limited
+physical action and spends it only when the expected control-risk reduction
+justifies the budget. A small hazard-navigation simulation shows why the
+distinction matters. A no-sensing baseline reaches the goal often but collides
+frequently. A greedy information policy over-senses and misses the finite
+control horizon. A risk-coupled budgeted policy spends only two sensing actions,
+reduces collisions, and keeps enough horizon to finish the task. The result is
+not a broad benchmark claim; it is mechanistic evidence that attention should be
+accounted for as an embodied resource, not treated as free uncertainty
+reduction.
+\end{abstract}
+
+\section{Introduction}
+Robots do not observe from nowhere. A camera view can require motion, a tactile
+measurement can require contact, and a high-resolution perception pass can cost
+latency while the robot is still moving. Yet much active perception work frames
+the problem as choosing the most informative observation. That framing hides a
+physical assumption: sensing is cheap enough, safe enough, and separable enough
+to optimize before or outside control.
+
+This paper asks a narrower question. What if attention itself is a scarce
+embodied resource? We use \emph{attention} broadly: visual fixation, tactile
+probing, active view selection, high-resolution inference, or any sensing action
+that consumes time and physical opportunity. The contribution is not a larger
+model, a new benchmark, or reinforcement learning. It is a change in accounting.
+The robot should spend attention only when the sensing action preserves more
+control value than it consumes.
+
+Our claims are modest. First, information gain alone can overvalue sensing when
+there is a finite control horizon. Second, a risk-coupled budget can select
+less information and still produce better task behavior. Third, the difference
+is observable in a small runnable task with a fixed hazard, a finite horizon,
+and a limited attention budget.
+
+\section{Related Work}
+The closest areas are active perception, active sensing, sensor scheduling,
+information gathering, tactile exploration, and perception-aware manipulation.
+The 2,013-row sweep in \texttt{docs/related\_work\_matrix.csv} covers robotics
+and robotics-adjacent arXiv papers, then narrows to active-perception and
+sensor-management clusters. The strongest hostile priors include active
+sensing surveys, multi-robot information acquisition, attention-based planning
+with active perception, submodular active perception, and active neural sensing.
+
+These works make it non-novel to choose views, maximize information, schedule
+sensors, or couple perception to action. The remaining gap is the objective.
+Many methods ask whether an observation is informative. Fewer ask whether the
+robot can afford the embodied act of attending under immediate control risk.
+
+\section{Budgeted Attention}
+Let $s_t$ be the robot state, $b_t$ its belief uncertainty, $u_t$ a control
+action, and $o_t$ a sensing action. A standard active-perception objective can
+choose $o_t$ by maximizing expected information gain. We instead introduce an
+attention budget $B_t$ and a risk-coupled spending rule:
+\[
+  o_t \text{ is allowed only if }
+  \Delta R(s_t,b_t,o_t) > C_{\mathrm{attn}}(o_t, B_t, H_t),
+\]
+where $\Delta R$ is expected control-risk reduction, $C_{\mathrm{attn}}$ is the
+embodied cost of sensing, and $H_t$ is the remaining control horizon. The
+important feature is not the exact formula; it is that attention competes with
+actuation for finite physical opportunity.
+
+\section{Toy Evidence}
+We implement a one-dimensional hazard task in
+\texttt{scripts/toy\_attention\_budget.py}. The robot must reach a target at
+position 10 within 12 steps while crossing a hazard near position 5. Moving
+under uncertainty can collide. Sensing reduces uncertainty, but it consumes one
+step and one unit of attention.
+
+The policies are deliberately simple. The baseline never senses. The greedy
+policy senses until uncertainty is very low. The budgeted policy senses only
+while uncertainty is high and the robot is not at the risky hazard boundary.
+All policies are evaluated for 2,000 deterministic seeds.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrrrrr}
+\toprule
+Policy & Success & Collisions & Avg. return & Attention & Info \\
+\midrule
+Baseline & 836 & 1164 & -1.734 & 0.000 & 0.000 \\
+Greedy & 0 & 114 & -1.767 & 5.000 & 3.564 \\
+Budgeted & 1572 & 428 & 1.049 & 2.000 & -0.044 \\
+\bottomrule
+\end{tabular}
+\caption{Toy attention-budget task. Greedy sensing gathers more information but
+spends too much horizon to finish. Budgeted attention spends less and succeeds
+more often.}
+\end{table}
+
+The exact values are less important than the failure mode. Information gain is
+not the right objective when sensing consumes the same finite horizon needed
+for safe control.
+
+\section{Limitations}
+This is a toy experiment, not a hardware result. The budget rule is hand-coded,
+the hazard is simple, and the attention cost is stylized. The claim is also
+close to prior work in active perception with costs. The novelty boundary is
+therefore narrow: attention is treated as a physically consumed control
+resource, not merely as an observation-selection cost.
+
+\section{Conclusion}
+Embodied attention should be budgeted. In robots, sensing can improve belief
+while still damaging control opportunity. A small simulation shows that a
+risk-coupled budget can outperform both no sensing and greedy sensing. The next
+step is to validate the same accounting on real perception-action loops where
+view changes, tactile probes, and compute latency have measurable physical
+cost.
+
+\section*{References}
+\small
+Active sensing for robotics surveys; decentralized active information
+acquisition; attention-based planning with active perception; submodular active
+perception; multi-modal active perception for information gathering; active
+perception and representation for robotic manipulation; robot active neural
+sensing and planning; tactile and visuo-tactile active perception; and
+perception-aware robot navigation and manipulation papers identified in
+\texttt{docs/hostile\_prior\_work.md}.
+
+\end{document}
