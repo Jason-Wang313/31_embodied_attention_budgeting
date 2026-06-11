@@ -1,0 +1,4 @@
+policy,success,collisions,avg_return,avg_attention_used,avg_info
+baseline,836,1164,-1.734,0.000,0.000
+greedy,0,114,-1.767,5.000,3.564
+budgeted,1572,428,1.049,2.000,-0.044
