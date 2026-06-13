@@ -42,7 +42,7 @@ def step_dynamics(x, belief_sigma, budget, action, rng):
     return x, belief_sigma, budget, reward, collided, info_gain, attention_cost
 
 
-def run_episode(policy, seed):
+def run_episode(policy, seed, horizon=12):
     rng = random.Random(seed)
     x = 0
     belief_sigma = 2.2
@@ -51,7 +51,7 @@ def run_episode(policy, seed):
     total_info = 0.0
     attention_used = 0.0
     collided = False
-    for t in range(12):
+    for t in range(horizon):
         if x >= 10 or collided:
             break
         if policy == "greedy":
@@ -71,14 +71,67 @@ def run_episode(policy, seed):
     return success, int(collided), total_reward, attention_used, total_info
 
 
-def aggregate(policy, n=2000):
-    vals = [run_episode(policy, s) for s in range(n)]
+def aggregate(policy, n=2000, horizon=12):
+    vals = [run_episode(policy, s, horizon=horizon) for s in range(n)]
     success = sum(v[0] for v in vals)
     collisions = sum(v[1] for v in vals)
     avg_return = sum(v[2] for v in vals) / n
     avg_attention_used = sum(v[3] for v in vals) / n
     avg_info = sum(v[4] for v in vals) / n
     return Result(policy, success, collisions, avg_return, avg_attention_used, avg_info)
+
+
+def horizon_stress(horizons=(12, 14, 16, 18), n=2000):
+    rows = []
+    for horizon in horizons:
+        for policy in ["baseline", "greedy", "budgeted"]:
+            result = aggregate(policy, n=n, horizon=horizon)
+            rows.append(
+                {
+                    "horizon": horizon,
+                    "policy": policy,
+                    "success": result.success,
+                    "collisions": result.collisions,
+                    "avg_return": result.avg_return,
+                    "avg_attention_used": result.avg_attention_used,
+                    "avg_info": result.avg_info,
+                }
+            )
+    return rows
+
+
+def write_horizon_stress(rows):
+    out = Path("docs/toy_attention_horizon_stress.csv")
+    with out.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(
+            f,
+            fieldnames=[
+                "horizon",
+                "policy",
+                "success",
+                "collisions",
+                "avg_return",
+                "avg_attention_used",
+                "avg_info",
+            ],
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+    table = Path("docs/toy_attention_horizon_stress_table.tex")
+    lines = [
+        "\\begin{tabular}{llrrrr}",
+        "\\toprule",
+        "Horizon & Policy & Success & Collisions & Return & Attention \\\\",
+        "\\midrule",
+    ]
+    for row in rows:
+        lines.append(
+            f"{row['horizon']} & {row['policy']} & {row['success']} & {row['collisions']} & "
+            f"{float(row['avg_return']):.3f} & {float(row['avg_attention_used']):.3f} \\\\"
+        )
+    lines.extend(["\\bottomrule", "\\end{tabular}", ""])
+    table.write_text("\n".join(lines), encoding="utf-8")
 
 
 def main():
@@ -91,6 +144,8 @@ def main():
             writer.writerow([r.policy, r.success, r.collisions, f"{r.avg_return:.3f}", f"{r.avg_attention_used:.3f}", f"{r.avg_info:.3f}"])
     for r in rows:
         print(r)
+    stress_rows = horizon_stress()
+    write_horizon_stress(stress_rows)
     print(f"wrote {out}")
 
 
