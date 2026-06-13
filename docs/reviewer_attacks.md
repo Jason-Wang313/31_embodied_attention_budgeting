@@ -10,6 +10,7 @@
 8. The benefit disappears if sensing is cheap.
 9. The policy may be overly conservative.
 10. The paper confuses uncertainty reduction with safety.
+11. The finite-horizon setup unfairly punishes greedy sensing.
 
 Planned responses:
 
@@ -17,3 +18,4 @@ Planned responses:
 - show a case where safety and information diverge,
 - include a direct ablation that removes the budget coupling,
 - and honestly state the limits of the toy study.
+- V2 concedes the horizon boundary: at horizon 16, greedy information gathering beats budgeted attention.

@@ -11,6 +11,13 @@
 \begin{document}
 \maketitle
 
+\paragraph{Submission-hardening version: v2.}
+This revision adds a horizon stress. The budgeted policy wins at horizon 12
+with 1,572/2,000 successes while greedy information gathering has 0/2,000, but
+at horizon 16 greedy recovers to 1,886/2,000 successes versus the budgeted
+policy's 1,572/2,000. The supported claim is therefore finite-horizon,
+risk-coupled attention budgeting, not a universal rejection of information gain.
+
 \begin{abstract}
 Active perception usually asks which observation would be most informative.
 For embodied robots, that question is incomplete: sensing consumes time,
@@ -24,7 +31,9 @@ control horizon. A risk-coupled budgeted policy spends only two sensing actions,
 reduces collisions, and keeps enough horizon to finish the task. The result is
 not a broad benchmark claim; it is mechanistic evidence that attention should be
 accounted for as an embodied resource, not treated as free uncertainty
-reduction.
+reduction. A v2 horizon stress shows the boundary: when the horizon grows from
+12 to 16 steps, greedy sensing recovers to 1,886/2,000 successes and exceeds the
+budgeted policy.
 \end{abstract}
 
 \section{Introduction}
@@ -109,12 +118,32 @@ The exact values are less important than the failure mode. Information gain is
 not the right objective when sensing consumes the same finite horizon needed
 for safe control.
 
+\paragraph{V2 horizon stress.}
+The main table depends on a tight 12-step control horizon. To attack that
+assumption, we rerun the same deterministic seeds with horizons 12, 14, 16, and
+18. Table~\ref{tab:horizon} shows that greedy information gathering is bad only
+when its five sensing actions consume too much of the horizon. At horizon 16,
+greedy reaches 1,886 successes with 114 collisions and average return 1.807,
+while the budgeted policy remains at 1,572 successes and average return 1.049.
+Thus the claim is not that information gain is wrong. The claim is that
+information gain must be priced by remaining control opportunity.
+
+\begin{table}[h]
+\centering
+\input{docs/toy_attention_horizon_stress_table.tex}
+\caption{V2 horizon stress. When the control horizon is long enough, greedy
+information gathering recovers and outperforms the budgeted policy.}
+\label{tab:horizon}
+\end{table}
+
 \section{Limitations}
 This is a toy experiment, not a hardware result. The budget rule is hand-coded,
 the hazard is simple, and the attention cost is stylized. The claim is also
 close to prior work in active perception with costs. The novelty boundary is
 therefore narrow: attention is treated as a physically consumed control
-resource, not merely as an observation-selection cost.
+resource, not merely as an observation-selection cost. The v2 stress makes the
+boundary explicit: if the horizon is long enough or sensing is cheap enough,
+greedy information gathering can be the better policy.
 
 \section{Conclusion}
 Embodied attention should be budgeted. In robots, sensing can improve belief
