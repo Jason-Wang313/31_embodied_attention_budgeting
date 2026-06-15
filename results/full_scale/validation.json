@@ -1,0 +1,34 @@
+{
+  "paper": 31,
+  "version": "v3 final full-scale",
+  "runner": "scripts/run_full_scale_attention_suite.py",
+  "families": 8,
+  "regimes": 10,
+  "methods": 12,
+  "seeds": 80,
+  "steps_per_seed": 160,
+  "represented_step_decisions": 12288000,
+  "canonical_pdf": "C:/Users/wangz/Downloads/31.pdf",
+  "canonical_pdf_pages": 25,
+  "canonical_pdf_bytes": 353551,
+  "canonical_pdf_sha256": "88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2",
+  "local_main_pdf_present_after_final_build": false,
+  "key_results": {
+    "no_sensing_success_rate": 0.35258475055469973,
+    "greedy_success_rate": 0.391386980839751,
+    "risk_coupled_success_rate": 0.7646944419828182,
+    "horizon_aware_success_rate": 0.7645208279122383,
+    "oracle_success_rate": 0.8286792253249294,
+    "greedy_attention_cost": 45.32619628277974,
+    "risk_coupled_attention_cost": 5.59702668606894,
+    "oracle_utility_cost": 1.1079700041463716
+  },
+  "verified_pdf_text_markers": [
+    "v3 final full-scale",
+    "12,288,000",
+    "greedy information",
+    "risk-coupled",
+    "76.5",
+    "82.9"
+  ]
+}

@@ -1,25 +1,27 @@
 # Submission Readiness Decision
 
-Decision: workshop-only / strong-revise.
+Decision: final for this batch pass as a v3 full-scale synthetic/mechanism paper.
 
-## Why Not Submit-Ready
+## Why This Is Now Final For The Batch
 
-- Evidence is a toy one-dimensional hazard task.
-- The budgeted policy is hand-coded.
-- V2 shows the advantage depends on a tight horizon.
-- There is no measured sensing latency, motion cost, power, or safety-margin consumption.
-- There is no comparison to POMDP or cost-aware active sensing baselines.
+- The manuscript renders to 25 pages without padding.
+- The v3 suite represents 12,288,000 attention-control decisions over 8 families, 10 regimes, 12 policies, and 80 seeds.
+- The comparison set is no longer only no-sensing, greedy, and budgeted attention; it includes periodic, threshold, fixed-budget, risk-coupled, horizon-aware, compute-aware, adaptive, myopic, oracle, and randomized policies.
+- The paper reports success, collision, attention cost, information gain, horizon slack, risk exposure, and utility together.
+- The suite includes cheap-attention, long-horizon, delayed-observation, noisy-sensor, model-mismatch, and over-budget controls.
+- The final PDF exists only as the canonical Downloads artifact.
 
-## Why Not Kill
+## Remaining Non-Claims
 
-- The embodied-attention framing is clear and useful for robot perception-action loops.
-- The toy task cleanly separates information gain from control opportunity.
-- The v2 stress makes the finite-horizon boundary explicit.
-- The claim is narrow enough after hardening.
+- No real robot validation.
+- No measured sensing latency, motion cost, power, contact disturbance, or safety-margin consumption.
+- No learned value-of-attention model.
+- No high-fidelity POMDP or hardware active-sensing baseline.
+- No claim that information gain is always wrong.
 
-## Required Next Work
+## Required Next Work For A Strong Hardware Submission
 
 - Evaluate on a real perception-action task with measured sensing cost.
-- Compare against cost-aware active sensing/POMDP baselines.
-- Learn or calibrate the risk-coupled budget rule.
-- Include regimes where greedy information gathering is the correct choice.
+- Compare against cost-aware active sensing and POMDP/belief-space baselines.
+- Learn or calibrate value-of-attention models from logs.
+- Include regimes where greedy information gathering is correctly preferred.

@@ -1,0 +1,56 @@
+{
+  "version": "v3 final full-scale",
+  "families": [
+    "hazard_navigation",
+    "occluded_corridor",
+    "tactile_probe_manipulation",
+    "mobile_viewpoint_selection",
+    "compute_latency_control",
+    "multi_sensor_scheduling",
+    "dynamic_obstacle_tracking",
+    "cheap_attention_control"
+  ],
+  "regimes": [
+    "tight_horizon",
+    "long_horizon",
+    "high_hazard",
+    "low_hazard",
+    "high_attention_cost",
+    "low_attention_cost",
+    "delayed_observation",
+    "noisy_sensor",
+    "model_mismatch",
+    "over_budget_trap"
+  ],
+  "methods": [
+    "no_sensing",
+    "greedy_info",
+    "periodic_sensing",
+    "uncertainty_threshold",
+    "fixed_budget",
+    "risk_coupled_budget",
+    "horizon_aware_budget",
+    "compute_aware_budget",
+    "adaptive_budget",
+    "myopic_utility",
+    "oracle_value_of_attention",
+    "randomized_budget"
+  ],
+  "seeds": 80,
+  "steps_per_seed": 160,
+  "step_decisions": 12288000,
+  "aggregate_rows": 960,
+  "seed_rows": 76800,
+  "key_results": {
+    "no_sensing_success_rate": 0.35258475055469973,
+    "greedy_success_rate": 0.391386980839751,
+    "risk_coupled_success_rate": 0.7646944419828182,
+    "horizon_aware_success_rate": 0.7645208279122383,
+    "oracle_success_rate": 0.8286792253249294,
+    "greedy_attention_cost": 45.32619628277974,
+    "risk_coupled_attention_cost": 5.59702668606894,
+    "greedy_utility_cost": 3.550480856763619,
+    "risk_coupled_utility_cost": 1.502567837764121,
+    "oracle_utility_cost": 1.1079700041463716
+  }
+}

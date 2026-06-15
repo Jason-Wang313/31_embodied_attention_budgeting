@@ -1,35 +1,32 @@
 # Child Status: Paper 31
 
-Stage: complete; v2 submission hardening ready to commit and push
+Stage: complete; v3 final full-scale hardening ready to commit and push
 
 Current facts:
 - Literature sweep completed with `docs/related_work_matrix.csv` containing 2013 rows.
-- Main toy simulator regenerated `docs/toy_attention_budget_results.csv`.
-- Main horizon-12 result: greedy sensing succeeds in 0/2000 seeds while budgeted attention succeeds in 1572/2000.
-- V2 horizon stress generated `docs/toy_attention_horizon_stress.csv` and `docs/toy_attention_horizon_stress_table.tex`.
-- V2 stress result: at horizon 16, greedy sensing succeeds in 1886/2000 seeds and beats budgeted attention's 1572/2000 successes.
-- Paper source is `main.tex` with visible v2 note, horizon stress table, and narrowed limitations.
-- LaTeX build completed with `scripts/build_pdf.ps1`.
-- Final PDF copied to `C:/Users/wangz/Downloads/31.pdf`.
-- Transient `main.pdf` removed so the final PDF exists only at the required Downloads path.
-- Checked Desktop paths contain no `31.pdf`.
+- Original toy simulator and v2 horizon stress artifacts are preserved for provenance.
+- A paper-specific full-scale execution plan was written before substantive v3 edits at `docs/full_scale_execution_plan.md`.
+- Full-scale suite is `scripts/run_full_scale_attention_suite.py`.
+- Full-scale outputs are in `results/full_scale/`.
+- The v3 suite covers 8 families, 10 regimes, 12 policies, 80 seeds, 160 steps per seed, and 12,288,000 represented attention-control decisions.
+- Main v3 result: greedy information succeeds in 39.1% of aggregate cases with attention cost 45.3; risk-coupled budgeting succeeds in 76.5% with attention cost 5.6; oracle value-of-attention succeeds in 82.9% with utility cost 1.108.
+- Negative controls remain explicit: low-attention-cost/long-horizon controls let greedy information recover, no-sensing fails on safety, and over-budget traps expose under-sensing.
+- Paper source is `main.tex` with visible `v3 final full-scale` marker and 25 rendered pages.
+- Canonical final PDF is `C:/Users/wangz/Downloads/31.pdf` with SHA256 `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`.
+- Final PDF size is 353551 bytes.
+- Transient `main.pdf` was removed by `scripts/build_pdf.ps1`.
 - Public GitHub repo exists: `https://github.com/Jason-Wang313/31_embodied_attention_budgeting`.
-- `docs/final_audit.md` exists and reports build status, v2 stress evidence, Downloads-only artifact status, Desktop absence, and local PDF absence.
 
 Commands run:
-- `python scripts\toy_attention_budget.py`
+- `python scripts\run_full_scale_attention_suite.py`
+- `pdflatex -interaction=nonstopmode -halt-on-error main.tex` twice for local page-count QA
 - `powershell -ExecutionPolicy Bypass -File scripts\build_pdf.ps1`
-- Safe probes for build status, Downloads PDF, Desktop absence, local PDF absence, LaTeX log status, and generated stress outputs.
+- Safe probes for build status, Downloads PDF, local PDF absence, LaTeX log status, PDF text markers, page count, file size, and SHA256 hash.
 
 Historical failures:
 - Original child attempt timed out during an unbounded template search.
 - V1 was manually recovered by copying local ICLR style files and compiling directly.
-
-Recovery / hardening steps:
-- Added v2 horizon stress and narrowed the claim to finite-horizon, risk-coupled attention budgeting.
-- Added standard hardening docs: attack log, version log, hostile reviewer response, rigor checklist, reproducibility checklist, and readiness decision.
-- Added `scripts/build_pdf.ps1` and `.gitignore` rule for `main.pdf`.
-- Rebuilt the canonical PDF and removed the tracked local PDF.
+- V2 was useful but short and toy-scale; v3 replaces it with a broader full-scale synthetic manuscript.
 
 Next:
-- Commit and push the v2 hardening update.
+- Commit and push the v3 hardening update.
