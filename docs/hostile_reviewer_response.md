@@ -2,17 +2,17 @@
 
 ## Likely Rejection
 
-This is active perception with a cost term, shown in a toy task where the horizon is chosen to punish greedy sensing. If sensing is cheap or the horizon is longer, information gain may be the right policy.
+This is active perception or value of information with a cost term, evaluated in a synthetic suite. The oracle wins, and the deployable budgeted policies depend on hand-designed risk and cost models.
 
 ## Honest Response
 
-We agree. The contribution is not a universal anti-information-gain result. It is a reminder that robot attention consumes physical control opportunity and must be priced against risk and horizon.
+That criticism is partly correct. The paper should not claim broad novelty over all cost-aware active perception. The defended contribution is narrower: attention can consume embodied control opportunity, and robotics evaluations should report task success, safety, attention cost, information gain, and horizon slack together.
 
-The v2 stress quantifies the boundary. At horizon 12, greedy sensing succeeds in 0/2,000 seeds because it spends five actions sensing and cannot finish. At horizon 16, greedy succeeds in 1,886/2,000 seeds, exceeding the budgeted policy's 1,572/2,000. The paper should claim finite-horizon, risk-coupled attention budgeting only.
+The v3 suite strengthens the old toy claim. Across 12,288,000 represented attention-control decisions, greedy information succeeds in 39.1% of aggregate cases while spending 45.3 attention-cost units. Risk-coupled budgeting succeeds in 76.5% while spending 5.6 attention-cost units. Oracle value-of-attention succeeds in 82.9% and gives the best utility, showing the value of calibrated attention-cost models. Cheap-attention and long-horizon controls preserve the boundary where greedy information can recover.
 
-## Required Upgrade For Main-Track Submission
+## Required Upgrade For Main-Track Hardware Submission
 
-- Evaluate on a real perception-action loop with measured sensing latency and motion cost.
-- Compare against cost-aware active sensing and POMDP baselines.
-- Learn or tune the risk proxy instead of hand-coding it.
+- Evaluate on a real perception-action loop with measured sensing latency, motion cost, compute cost, or contact disturbance.
+- Compare against cost-aware active sensing, POMDP, and belief-space planning baselines.
+- Learn or tune value-of-attention models instead of hand-coding them.
 - Report regimes where greedy information gathering is correctly preferred.

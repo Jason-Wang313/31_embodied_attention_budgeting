@@ -1,21 +1,22 @@
 # Reviewer Attacks
 
-1. This is just active perception with a cost term.
-2. The budget is arbitrary and hand-tuned.
-3. The toy environment is too simple to matter.
-4. The paper does not prove a real robotics consequence.
-5. The contribution is a framing, not a mechanism.
-6. The comparison set misses important active sensing baselines.
-7. The method depends on a custom risk proxy that may not transfer.
-8. The benefit disappears if sensing is cheap.
-9. The policy may be overly conservative.
-10. The paper confuses uncertainty reduction with safety.
-11. The finite-horizon setup unfairly punishes greedy sensing.
+1. This is active perception with a cost term.
+2. The budget and utility weights are hand-designed.
+3. The suite is synthetic, not a robot.
+4. The oracle is not deployable.
+5. The comparison set still lacks a full POMDP/belief-space planner.
+6. The method depends on custom risk and attention-cost estimates.
+7. The benefit may disappear if sensing is cheap.
+8. The policy may be overly conservative and under-sense.
+9. The paper confuses uncertainty reduction with safety.
+10. The finite-horizon setup can punish greedy sensing.
+11. Expected rollouts may smooth rare catastrophic events.
 
-Planned responses:
+## Responses
 
-- show where cost-on-information fails,
-- show a case where safety and information diverge,
-- include a direct ablation that removes the budget coupling,
-- and honestly state the limits of the toy study.
-- V2 concedes the horizon boundary: at horizon 16, greedy information gathering beats budgeted attention.
+- Keep novelty to embodied control-opportunity accounting, not all active perception.
+- Report the cheap-attention and long-horizon controls where greedy information recovers.
+- Report the over-budget trap where conservative attention fails.
+- Treat the oracle as an upper reference only.
+- State that hardware validation and stronger planning baselines are required for the next claim level.
+- Preserve the v2 horizon stress as provenance.

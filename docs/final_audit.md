@@ -1,35 +1,36 @@
 # Final Audit
 
-1. Chosen thesis: Embodied attention is a limited physical resource that must be budgeted jointly with control risk.
+1. Chosen thesis: Embodied attention is a limited physical and computational resource that must be budgeted jointly with control risk, attention cost, and remaining horizon.
 
 2. Field assumption broken: The paper challenges the assumption that sensing is effectively free or separable from safety-critical control.
 
-3. New central mechanism: A risk-coupled attention budget that can prevent the robot from spending sensing effort when it would degrade safe action options.
+3. New central mechanism: A risk-coupled attention budget that prevents the robot from spending sensing effort when it degrades control opportunity, while still allowing attention when risk reduction justifies cost.
 
-4. Genuine novelty: The central variable is not uncertainty or information gain alone; it is embodied consumption of attention under finite control opportunity.
+4. Genuine novelty boundary: Active perception and value-of-information methods are close. The defended contribution is explicit embodied control-opportunity accounting and multi-axis reporting.
 
-5. Closest hostile prior work: Active perception, active sensing surveys, attention-based planning with active perception, decentralized active information acquisition, sensor scheduling, and cost-aware information gathering.
+5. Closest hostile prior work: Active perception, active sensing surveys, attention-based planning, decentralized active information acquisition, sensor scheduling, value of information, and cost-aware information gathering.
 
 6. Literature coverage: `docs/related_work_matrix.csv` contains a 2013-paper broad sweep plus targeted active-perception and sensor-management clustering. Coverage is useful but not a manual full-PDF related-work review.
 
-7. Proof/formal-claim status: No formal theorem. The claims are mechanistic and empirical, supported by `scripts/toy_attention_budget.py`.
+7. Proof/formal-claim status: No formal theorem. Claims are mechanistic and empirical, supported by the v3 full-scale synthetic suite plus preserved v1/v2 artifacts.
 
-8. Strongest evidence: At horizon 12, the greedy information policy spends five attention actions and succeeds in 0/2000 seeds, while budgeted attention spends two attention actions and succeeds in 1572/2000 seeds.
+8. Strongest v3 evidence: The full-scale suite represents 12,288,000 attention-control decisions over 8 dynamics families, 10 regimes, 12 policies, and 80 seeds. Greedy information succeeds in 39.1% with attention cost 45.3; risk-coupled budgeting succeeds in 76.5% with attention cost 5.6; oracle value-of-attention succeeds in 82.9% with best utility cost 1.108.
 
-9. V2 stress evidence: The horizon stress shows the boundary. At horizon 16, greedy sensing recovers to 1886/2000 successes with 114 collisions and average return 1.807, beating budgeted attention at 1572/2000 successes and average return 1.049. This supports finite-horizon attention budgeting, not a universal rejection of information gain.
+9. Negative controls and failures: Low-attention-cost and long-horizon regimes show greedy information can recover. No-sensing fails on safety. Over-budget traps show budgeted policies can fail by under-sensing.
 
-10. Biggest weaknesses: Toy one-dimensional task; hand-coded risk/budget rule; no hardware validation; no measured sensing latency or physical attention cost; no POMDP or cost-aware active sensing baseline.
+10. Biggest remaining weakness: No real robot validation, no measured sensing latency/motion/contact/compute cost, and no learned POMDP or hardware active-sensing baseline.
 
-11. Paper-readiness judgment: workshop-only / strong-revise. The mechanism is clear, but a strong ICLR submission would need richer embodied-control benchmarks, measured sensing costs, and stronger active-perception baselines.
+11. Paper-readiness judgment: v3 is final for this batch pass as a full-scale synthetic/mechanism paper. It is not a hardware-validated robotics claim.
 
-12. Exact Downloads PDF path: `C:/Users/wangz/Downloads/31.pdf` (exists, size=152764 bytes). Build status: `complete`; copied flag: `True`.
+12. Exact Downloads PDF path: `C:/Users/wangz/Downloads/31.pdf` (exists, size=353551 bytes, 25 pages, SHA256 `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`). Build status: `complete`; copied flag: `True`.
 
 13. GitHub URL: `https://github.com/Jason-Wang313/31_embodied_attention_budgeting`.
 
-14. Visible Desktop PDF copy: absent at checked Desktop paths (expected; canonical PDF is Downloads only).
+14. Local repo PDF copy: absent after the final build script removed transient `main.pdf`.
 
-15. Local repo PDF copy: absent (expected after Downloads copy).
+15. PDF text markers verified: `v3 final full-scale`, `12,288,000`, `greedy information`, `risk-coupled`, `76.5`, and `82.9`.
 
 Additional audit notes:
 - The build used `scripts/build_pdf.ps1` and removed transient `main.pdf`.
-- V2 outputs are `docs/toy_attention_horizon_stress.csv` and `docs/toy_attention_horizon_stress_table.tex`.
+- V3 outputs are in `results/full_scale/`.
+- V2 outputs remain as provenance in `docs/toy_attention_horizon_stress.csv` and `docs/toy_attention_horizon_stress_table.tex`.

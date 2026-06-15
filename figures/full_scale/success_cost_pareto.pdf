@@ -1,0 +1,47 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 450 260] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 841 >>
+stream
+BT /F1 12 Tf 30.0 240.0 Td (Success versus attention cost Pareto view) Tj ET
+0.12 0.12 0.12 RG 0.8 w 55.0 42.0 m 405.0 42.0 l S
+0.12 0.12 0.12 RG 0.8 w 55.0 42.0 m 55.0 220.0 l S
+0.500 0.500 0.500 rg 51.0 106.1 8.0 8.0 re f
+BT /F1 7 Tf 61.0 108.1 Td (no sensing) Tj ET
+0.840 0.300 0.240 rg 371.0 113.6 8.0 8.0 re f
+BT /F1 7 Tf 381.0 115.6 Td (greedy info) Tj ET
+0.890 0.610 0.180 rg 81.9 159.2 8.0 8.0 re f
+BT /F1 7 Tf 91.9 161.2 Td (fixed budget) Tj ET
+0.240 0.630 0.450 rg 90.5 185.6 8.0 8.0 re f
+BT /F1 7 Tf 100.5 187.6 Td (risk coupled budge) Tj ET
+0.240 0.560 0.740 rg 90.1 185.6 8.0 8.0 re f
+BT /F1 7 Tf 100.1 187.6 Td (horizon aware budg) Tj ET
+0.480 0.350 0.680 rg 99.8 198.0 8.0 8.0 re f
+BT /F1 7 Tf 109.8 200.0 Td (oracle value of at) Tj ET
+BT /F1 8 Tf 165.0 18.0 Td (attention cost) Tj ET
+BT /F1 8 Tf 11.0 132.0 Td (success) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer << /Size 6 /Root 1 0 R >>
+startxref
+1203
+%%EOF

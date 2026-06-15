@@ -1,23 +1,27 @@
 # Embodied Attention Budgeting
 
-Recovered paper package for robotics batch paper 31.
+Recovered and v3 submission-hardened package for robotics batch paper 31.
 
-The project contains a broad arXiv-derived robotics literature sweep, novelty
-notes, a small attention-budgeting simulation, and an anonymous ICLR-style
-paper.
+The project contains a broad robotics literature sweep, novelty/audit notes,
+the original toy attention-budgeting simulation, a RAM-light full-scale
+synthetic suite, and a 25-page anonymous ICLR-style manuscript.
 
 ## Hardening Status
 
-This is the v2 submission-hardened version. The added horizon stress shows the
-boundary: at horizon 12, budgeted attention succeeds in 1,572/2,000 seeds while
-greedy information gathering succeeds in 0/2,000; at horizon 16, greedy recovers
-to 1,886/2,000 and beats the budgeted policy.
+This is the v3 final full-scale version. The new suite represents 12,288,000
+attention-control decisions across 8 dynamics families, 10 regimes, 12 policies,
+80 seeds, and 160 steps per seed. Greedy information gathering succeeds in
+39.1% of aggregate cases while spending 45.3 attention-cost units. Risk-coupled
+budgeting succeeds in 76.5% while spending 5.6 attention-cost units. The oracle
+value-of-attention policy succeeds in 82.9% and achieves the best utility cost,
+1.108.
 
 Build from the project root:
 
 ```powershell
-python scripts/toy_attention_budget.py
-powershell -ExecutionPolicy Bypass -File scripts/build_pdf.ps1
+python scripts\run_full_scale_attention_suite.py
+powershell -ExecutionPolicy Bypass -File scripts\build_pdf.ps1
 ```
 
-The batch output PDF is copied to `C:/Users/wangz/Downloads/31.pdf`.
+The canonical final PDF is `C:/Users/wangz/Downloads/31.pdf`.
+The final build removes the transient local `main.pdf`.
