@@ -9,10 +9,11 @@
 - [x] Generated v3 figures are in `figures/full_scale/`.
 - [x] Legacy v2 outputs remain in `docs/toy_attention_horizon_stress.csv` and `docs/toy_attention_horizon_stress_table.tex`.
 - [x] Canonical PDF path is `C:/Users/wangz/Downloads/31.pdf`.
-- [x] Canonical PDF is 25 pages and 353551 bytes.
-- [x] Canonical PDF SHA256 is `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`.
+- [x] Canonical PDF is 25 pages and 405172 bytes.
+- [x] Canonical PDF SHA256 is `2091D545EA035DEBDAB6E8AC3DFDBC0240EE44186A5A58963773B821C05742CD`.
 - [x] Local `main.pdf` is removed after canonical copy.
 - [x] `build_pdflatex2.log` has no overfull boxes, unresolved references, undefined citations, fatal errors, or TeX `!` errors.
+- [x] VLA-style link-box policy is configured in `main.tex`; final PDF has one-point red internal reference boxes and no cyan boxes.
 
 Recommended verification commands:
 

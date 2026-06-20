@@ -8,8 +8,15 @@
 - Generated v3 figures under `figures/full_scale/`.
 - Expanded `main.tex` into a 25-page final full-scale manuscript with v3 marker, full-scale results, controls, failure cases, reproducibility material, hardware protocols, and claim-boundary appendices.
 - Built the canonical PDF at `C:/Users/wangz/Downloads/31.pdf`.
-- Verified final PDF page count 25, size 353551 bytes, SHA256 `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`.
+- Verified the v3 final PDF hash before the later visual-hardening rebuild.
 - Verified local `main.pdf` was removed by the build script.
+
+## v4 Visual Hardening - 2026-06-20
+
+- Added the VLA role-model `hyperref` box policy to `main.tex`.
+- Rebuilt the canonical Downloads PDF.
+- Verified 25 pages, size 405,172 bytes, SHA256 `2091D545EA035DEBDAB6E8AC3DFDBC0240EE44186A5A58963773B821C05742CD`, and no local `main.pdf`.
+- Verified one-point red internal link boxes on pages 5 and 6, with no cyan boxes. The manuscript has no cite/url link annotations, so green cite/url boxes are configured but not present.
 
 ## v2 - 2026-06-13
 
