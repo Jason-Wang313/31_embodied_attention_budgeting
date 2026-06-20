@@ -22,13 +22,14 @@
 
 11. Paper-readiness judgment: v3 is final for this batch pass as a full-scale synthetic/mechanism paper. It is not a hardware-validated robotics claim.
 
-12. Exact Downloads PDF path: `C:/Users/wangz/Downloads/31.pdf` (exists, size=353551 bytes, 25 pages, SHA256 `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`). Build status: `complete`; copied flag: `True`.
+12. Exact Downloads PDF path: `C:/Users/wangz/Downloads/31.pdf` (exists, size=405172 bytes, 25 pages, SHA256 `2091D545EA035DEBDAB6E8AC3DFDBC0240EE44186A5A58963773B821C05742CD`). Build status: `complete`; copied flag: `True`.
 
 13. GitHub URL: `https://github.com/Jason-Wang313/31_embodied_attention_budgeting`.
 
 14. Local repo PDF copy: absent after the final build script removed transient `main.pdf`.
 
 15. PDF text markers verified: `v3 final full-scale`, `12,288,000`, `greedy information`, `risk-coupled`, `76.5`, and `82.9`.
+16. VLA-style visual check: link pages 5 and 6 were rendered with `pdftoppm` and inspected; one-point red internal reference boxes are crisp, aligned, and no cyan boxes appear.
 
 Additional audit notes:
 - The build used `scripts/build_pdf.ps1` and removed transient `main.pdf`.

@@ -10,6 +10,7 @@ Decision: final for this batch pass as a v3 full-scale synthetic/mechanism paper
 - The paper reports success, collision, attention cost, information gain, horizon slack, risk exposure, and utility together.
 - The suite includes cheap-attention, long-horizon, delayed-observation, noisy-sensor, model-mismatch, and over-budget controls.
 - The final PDF exists only as the canonical Downloads artifact.
+- The delivered PDF was rendered and visually inspected, including VLA-style red internal link boxes on pages 5 and 6.
 
 ## Remaining Non-Claims
 

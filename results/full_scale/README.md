@@ -29,3 +29,11 @@ Files:
 - `experiment_summary.json`: full suite metadata and headline results.
 - `representative_trace.csv`: explicit representative rollout trace.
 - `full_scale_*.tex`: generated LaTeX table rows included by `main.tex`.
+
+## Final PDF Validation
+
+- PDF: `C:/Users/wangz/Downloads/31.pdf`
+- Pages: 25
+- Size: 405,172 bytes
+- SHA256: `2091D545EA035DEBDAB6E8AC3DFDBC0240EE44186A5A58963773B821C05742CD`
+- Visual render checked: true, including VLA-style one-point red internal link boxes and no cyan boxes

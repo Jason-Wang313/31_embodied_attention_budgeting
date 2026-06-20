@@ -12,8 +12,9 @@ Current facts:
 - Main v3 result: greedy information succeeds in 39.1% of aggregate cases with attention cost 45.3; risk-coupled budgeting succeeds in 76.5% with attention cost 5.6; oracle value-of-attention succeeds in 82.9% with utility cost 1.108.
 - Negative controls remain explicit: low-attention-cost/long-horizon controls let greedy information recover, no-sensing fails on safety, and over-budget traps expose under-sensing.
 - Paper source is `main.tex` with visible `v3 final full-scale` marker and 25 rendered pages.
-- Canonical final PDF is `C:/Users/wangz/Downloads/31.pdf` with SHA256 `88388E37C44F4B5EA946D4AA0F68843D83871D5EC972A8A017046E62F80194D2`.
-- Final PDF size is 353551 bytes.
+- Canonical final PDF is `C:/Users/wangz/Downloads/31.pdf` with SHA256 `2091D545EA035DEBDAB6E8AC3DFDBC0240EE44186A5A58963773B821C05742CD`.
+- Final PDF size is 405172 bytes.
+- Latest visual hardening: VLA-style one-point red internal link boxes verified on pages 5 and 6; green cite/url border policy configured, with no cite/url annotations present in this manuscript.
 - Transient `main.pdf` was removed by `scripts/build_pdf.ps1`.
 - Public GitHub repo exists: `https://github.com/Jason-Wang313/31_embodied_attention_budgeting`.
 
